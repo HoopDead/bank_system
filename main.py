@@ -1,5 +1,9 @@
 from init.database_creator import Creator
+from automation.create_some_accounts import AccountCreatorAutomat
 
 print("OK")
-creator = Creator("127.0.0.1", "root", "WtQLkhu4rJ@")
-creator.create_db()
+database_creator = Creator()
+database_creator.create_db()
+database_creator.create_client_table()
+
+accounts_creator = AccountCreatorAutomat()
