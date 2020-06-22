@@ -1,6 +1,6 @@
 import socket 
 import threading
-from server_info import HEADER, PORT, SERVER, ADDR, FORMAT, DISCONNECT_MESSAGE
+from .server_info import HEADER, PORT, SERVER, ADDR, FORMAT, DISCONNECT_MESSAGE
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
@@ -37,7 +37,3 @@ class ServerClass:
             thread.start()
             print(f"[ACTIVE CONNECTIONS] {threading.activeCount() - 1}")
 
-
-print("[STARTING] server is starting...")
-server_instance = ServerClass(SERVER, ADDR)
-server_instance.start()

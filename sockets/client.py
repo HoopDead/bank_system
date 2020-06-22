@@ -1,8 +1,5 @@
 import socket
-from server_info import HEADER, PORT, SERVER, ADDR, FORMAT, DISCONNECT_MESSAGE
-
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(ADDR)
+from .server_info import HEADER, PORT, SERVER, ADDR, FORMAT, DISCONNECT_MESSAGE
 
 class ClientClass:
     def __init__(self):
@@ -16,8 +13,3 @@ class ClientClass:
         client.send(send_length)
         client.send(message)
         print(client.recv(2048).decode(FORMAT))
-
-
-client_instance = ClientClass()
-client_instance.send("test")
-client_instance.send(DISCONNECT_MESSAGE)

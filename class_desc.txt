@@ -1,0 +1,20 @@
+database_creator.py:
+
+    Class Creator handles multiple methods - 
+        _connection - connects to database
+        create_db - create database clients
+        create_client_table - create accounts table
+
+create_some_accounts.py:
+
+    Class inherits from Creator, the only reason is that _connection method is passed
+    Class AccountCreatorAutomat:
+    Class handles multiple methods - 
+        create_multiple_accounts - function to fill the accounts table with random data for testing
+
+client.py:
+
+
+server_info.py:
+
+    Handles information about connection to sockets
