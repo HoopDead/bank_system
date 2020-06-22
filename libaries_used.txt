@@ -15,3 +15,9 @@ quit;
 
 sudo /etc/init.d/mysql start
 mysql -u root -p
+
+
+IN CASE MYSQL WONT WORK
+
+sudo apt-get install libmysqlclient-dev
+sudo apt-get install python3-dev
