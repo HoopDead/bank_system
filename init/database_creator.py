@@ -1,12 +1,11 @@
-import mysql.connector
-from mysql.connector import errorcode
+import pymysql as mysql
 
 class Creator:
     def __init__(self):
         pass
 
     def _connection(self):
-        mydb = mysql.connector.connect(
+        mydb = mysql.connect(
             host = "127.0.0.1",
             user = "root",
             password = "123456"
@@ -27,10 +26,10 @@ class Creator:
         cursor = connection.cursor()
         cursor.execute("USE clients")
         try:
-            cursor.execute("CREATE TABLE accounts (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), surname VARCHAR(255), address VARCHAR(255), account_number VARCHAR(26), creditcard VARCHAR(16), cvv VARCHAR(3))")
+            cursor.execute("CREATE TABLE accounts (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), surname VARCHAR(255), address VARCHAR(255), account_number VARCHAR(26), creditcard VARCHAR(16), cvv VARCHAR(3), login_number VARCHAR(8), password VARCHAR(255))")
         except Exception:
             print("[Database_Creator.py] Error (CONTINUE): Table already exsits")
             cursor.execute("DROP TABLE accounts")
-            cursor.execute("CREATE TABLE accounts (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), surname VARCHAR(255), address VARCHAR(255), account_number VARCHAR(26), creditcard VARCHAR(16), cvv VARCHAR(3))")
+            cursor.execute("CREATE TABLE accounts (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), surname VARCHAR(255), address VARCHAR(255), account_number VARCHAR(26), creditcard VARCHAR(16), cvv VARCHAR(3), login_number VARCHAR(8), password VARCHAR(255))")
 
             pass
