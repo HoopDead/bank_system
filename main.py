@@ -6,15 +6,22 @@ from sockets.client import ClientClass
 
 
 print("[Main.py] Starting Database Creator")
-# database_creator = Creator()
-# database_creator.create_db()
-# database_creator.create_client_table()
-
+#=== CLASS INIT AREA
+database_creator = Creator()
 database_checker = Checker()
-database_checker.check_if_database_exists()
-database_checker.check_if_accounts_in_table_exists()
-database_checker.check_if_table_exists()
+accounts_creator = AccountCreatorAutomat()
 
+if (database_checker.check_if_database_exists()):
+    pass
+else:
+    database_creator.create_db()
 
-# accounts_creator = AccountCreatorAutomat()
-# accounts_creator.create_multiple_accounts()
+if (database_checker.check_if_table_exists()):
+    pass
+else:
+    database_creator.create_client_table()
+
+if (database_checker.check_if_accounts_in_table_exists()):
+    pass
+else:
+    accounts_creator.create_multiple_accounts()
