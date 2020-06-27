@@ -3,6 +3,7 @@ from init.database_checker import Checker
 from automation.create_some_accounts import AccountCreatorAutomat
 from sockets.server import ServerClass
 from sockets.client import ClientClass
+from auth.password_encrypt import AuthenticationPasswordEncrypter
 
 
 print("[Main.py] Starting Database Creator")
@@ -10,9 +11,12 @@ print("[Main.py] Starting Database Creator")
 database_creator = Creator()
 database_checker = Checker()
 accounts_creator = AccountCreatorAutomat()
+password_encrypter = AuthenticationPasswordEncrypter()
 
 database_creator.create_db()
 database_creator.create_client_table()
+
+password_encrypter.password_encode("test")
 
 if (database_checker.check_if_database_exists()):
     pass

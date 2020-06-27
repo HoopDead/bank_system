@@ -1,6 +1,10 @@
 mysql-connector-python
 mysql
 pymysql
+base64
+crypto
+pip install pycryptodome==3.4.3
+pycrypto
 
 Mysql config on ubuntu:
 
