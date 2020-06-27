@@ -11,6 +11,9 @@ database_creator = Creator()
 database_checker = Checker()
 accounts_creator = AccountCreatorAutomat()
 
+database_creator.create_db()
+database_creator.create_client_table()
+
 if (database_checker.check_if_database_exists()):
     pass
 else:

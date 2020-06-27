@@ -1,5 +1,5 @@
 from init.database_creator import Creator
-import pymysql as mysql
+import pymysql
 
 class Checker(Creator):
     def __init__(self):
@@ -20,11 +20,10 @@ class Checker(Creator):
     def check_if_table_exists(self):
         connection = self._connection()
         cursor = connection.cursor()
+        cursor.execute("USE clients")
         try:
-            cursor.execute("USE clients")
-            number_of_tables = cursor.execute("SHOW TABLES LIKE 'accounts'")
+            number_of_tables = cursor.execute("show tables like 'accounts';")
             print("[Database_checker.py] Table does exsists")
-            print(number_of_tables)
             return True
         except Exception:
             print("[Database_checker.py] Table does not exists")
@@ -35,9 +34,13 @@ class Checker(Creator):
         cursor = connection.cursor()
         try:
             cursor.execute("USE clients")
-            number_of_accounts = cursor.execute("SELECT EXISTS(SELECT 1 FROM accounts)")
-            print("[Database_checker.py] Table is not empty")
-            return True
+            number_of_accounts = cursor.execute("SELECT * FROM accounts;")
+            if (number_of_accounts < 0):
+                print("[Database_checker.py] Table is empty - adding some test accounts")
+                return False
+            else:
+                print("[Database_checker.py] Table is not empty")
+                return True
         except Exception:
-            print("[Database_checker.py] Table accounts is empty")
+            print("[Database_checker.py] Mysql ERROR")
             return False
