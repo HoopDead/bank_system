@@ -17,10 +17,7 @@ password_encrypter = AuthenticationPasswordEncrypter()
 database_creator.create_db()
 database_creator.create_client_table()
 
-msg = "12345".encode("utf-8")
-msg = bytes(msg)
-password_encrypter.password_decode(password_encrypter.password_encode(msg))
-
+password_encrypter.password_encode(b"test")
 
 if (database_checker.check_if_database_exists()):
     pass
