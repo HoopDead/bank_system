@@ -4,6 +4,7 @@ from automation.create_some_accounts import AccountCreatorAutomat
 from sockets.server import ServerClass
 from sockets.client import ClientClass
 from auth.password_encrypt import AuthenticationPasswordEncrypter
+import json
 
 
 print("[Main.py] Starting Database Creator")
@@ -16,7 +17,10 @@ password_encrypter = AuthenticationPasswordEncrypter()
 database_creator.create_db()
 database_creator.create_client_table()
 
-password_encrypter.password_encode("test")
+msg = "12345".encode("utf-8")
+msg = bytes(msg)
+password_encrypter.password_decode(password_encrypter.password_encode(msg))
+
 
 if (database_checker.check_if_database_exists()):
     pass
