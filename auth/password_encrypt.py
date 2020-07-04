@@ -1,10 +1,11 @@
-from base64 import b64encode
+from base64 import b64encode, b64decode
 from Cryptodome.Cipher import AES
 import json
 
 class AuthenticationPasswordEncrypter:
     def __init__(self):
         self.secret_key = b"1234567890123456"
+        self.nonce = "+XyHurecq+U="
     
     def password_encode(self, password):
         cipher = AES.new(self.secret_key, AES.MODE_CTR)
@@ -16,7 +17,13 @@ class AuthenticationPasswordEncrypter:
         return result
 
     def password_decode(self, password):
-        cipher = AES.new(self.secret_key,AES.MODE_CTR) # never use ECB in strong systems obviously
-        decoded = cipher.decrypt(password)
-        print(decoded)
-        return decoded
+        try:
+            b64 = json.loads(password)
+            nonce = b64decode(b64['nonce'])
+            ct = b64decode(b64['ciphertext'])
+            cipher = AES.new(self.secret_key, AES.MODE_CTR, nonce=nonce)
+            pt = cipher.decrypt(ct)
+            print("The message was: ", pt)
+            return pt
+        except ValueError:
+            print("Incorrect decryption")
