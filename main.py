@@ -17,12 +17,6 @@ password_encrypter = AuthenticationPasswordEncrypter()
 database_creator.create_db()
 database_creator.create_client_table()
 
-password_encrypter.set_secret_key()
-encoded = password_encrypter.password_encode(b"test")
-print(encoded)
-decoded = password_encrypter.password_decode(encoded)
-print(decoded)
-
 if (database_checker.check_if_database_exists()):
     pass
 else:

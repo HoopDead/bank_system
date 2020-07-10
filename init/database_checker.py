@@ -35,7 +35,8 @@ class Checker(Creator):
         try:
             cursor.execute("USE clients")
             number_of_accounts = cursor.execute("SELECT * FROM accounts;")
-            if (number_of_accounts < 0):
+            print(number_of_accounts)
+            if (number_of_accounts < 1):
                 print("[Database_checker.py] Table is empty - adding some test accounts")
                 return False
             else:

@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from init.database_creator import Creator
+from auth.password_encrypt import AuthenticationPasswordEncrypter
 import pymysql
 import requests
 from random import randint
@@ -27,8 +28,11 @@ class AccountCreatorAutomat(Creator):
                 "login_number": randint(11111111, 99999999), 
                 "password": r["results"][0]["login"]["password"]
             }
+            password_encrypter = AuthenticationPasswordEncrypter()
+            password_encrypter.set_secret_key()
+            password = password_encrypter.password_encode(person["password"].encode("utf-8"))
             statement = ("INSERT INTO accounts (name, surname, address, account_number, creditcard, cvv, login_number, password) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
-            values = (person["first_name"], person["last_name"], person["address"], person["account_number"], person["credit_card_number"], person["cvv"], person["login_number"], person["password"])
+            values = (person["first_name"], person["last_name"], person["address"], person["account_number"], person["credit_card_number"], person["cvv"], person["login_number"], password)
             try:
                 cursor.execute(statement, values)
             except pymysql.err.InternalError:
