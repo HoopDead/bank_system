@@ -17,6 +17,7 @@ password_encrypter = AuthenticationPasswordEncrypter()
 database_creator.create_db()
 database_creator.create_client_table()
 
+password_encrypter.set_secret_key()
 encoded = password_encrypter.password_encode(b"test")
 print(encoded)
 decoded = password_encrypter.password_decode(encoded)
