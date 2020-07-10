@@ -1,29 +1,17 @@
 from base64 import b64encode, b64decode
-from Cryptodome.Cipher import AES
+from cryptography.fernet import Fernet
 import json
 
 class AuthenticationPasswordEncrypter:
     def __init__(self):
-        self.secret_key = b"1234567890123456"
+        self.secret_key = b"aGFvh3W74GXdeFPKdw1PcJBgrGknaioGLKB2nWIzie4="
         self.nonce = "+XyHurecq+U="
     
     def password_encode(self, password):
-        cipher = AES.new(self.secret_key, AES.MODE_CTR)
-        ct_bytes = cipher.encrypt(password)
-        nonce = b64encode(cipher.nonce).decode("utf-8")
-        ct = b64encode(ct_bytes).decode("utf-8")
-        result = json.dumps({'nonce': nonce, 'ciphertext': ct})
-        print(result)
-        return result
-
+        return Fernet(self.secret_key).encrypt(password)
+        
     def password_decode(self, password):
         try:
-            b64 = json.loads(password)
-            nonce = b64decode(b64['nonce'])
-            ct = b64decode(b64['ciphertext'])
-            cipher = AES.new(self.secret_key, AES.MODE_CTR, nonce=nonce)
-            pt = cipher.decrypt(ct)
-            print("The message was: ", pt)
-            return pt
+            return Fernet(self.secret_key).decrypt(password)
         except ValueError:
             print("Incorrect decryption")

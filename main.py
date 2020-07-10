@@ -18,7 +18,9 @@ database_creator.create_db()
 database_creator.create_client_table()
 
 encoded = password_encrypter.password_encode(b"test")
-password_encrypter.password_decode(encoded)
+print(encoded)
+decoded = password_encrypter.password_decode(encoded)
+print(decoded)
 
 if (database_checker.check_if_database_exists()):
     pass
