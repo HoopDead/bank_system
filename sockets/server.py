@@ -2,6 +2,7 @@ import socket
 import threading
 from .server_info import HEADER, PORT, SERVER, ADDR, FORMAT, DISCONNECT_MESSAGE
 
+
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
 
@@ -30,7 +31,7 @@ class ServerClass:
 
     def start(self):
         server.listen()
-        print(f"[LISTENING] Server is listening on {SERVER}")
+        print(f"[Server.py] Server is on and listening on {SERVER}")
         while True:
             self.conn, self.addr = server.accept()
             thread = threading.Thread(target=self.handle_client, args=())
