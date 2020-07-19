@@ -1,22 +1,16 @@
 import socket
 import json
-
-HEADER = 64
-PORT = 5050
-SERVER = socket.gethostbyname(socket.gethostname())
-ADDR = (SERVER, PORT)
-FORMAT = 'utf-8'
-DISCONNECT_MESSAGE = {"code": 1, "message": "Im going to disconnect myself."}
+import server_info
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(ADDR)
+client.connect(server_info.ADDR)
 
 class ClientClass:
     def __init__(self):
         pass
 
     def send(self, msg):
-        message_string = json.dumps(DISCONNECT_MESSAGE).encode(FORMAT)
+        message_string = json.dumps(server_info.DISCONNECT_MESSAGE).encode(server_info.FORMAT)
         client.send(message_string)
         # message = msg.encode(FORMAT)
         # msg_length = len(message)
@@ -28,4 +22,4 @@ class ClientClass:
 
 if __name__ == "__main__":
     client_instance = ClientClass()
-    client_instance.send(DISCONNECT_MESSAGE)
+    client_instance.send(server_info.DISCONNECT_MESSAGE)
