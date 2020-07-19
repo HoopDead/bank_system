@@ -25,7 +25,7 @@ class ServerClass:
                 connected = False
 
             print("[%s] %s" % (self.addr, msg["message"]))
-            self.conn.send("[!] Message recived successfully".encode(server_info.FORMAT))
+            self.conn.send("[Server.py - Client.py] Message recived successfully".encode(server_info.FORMAT))
 
         self.conn.close()
 

@@ -10,8 +10,9 @@ class ClientClass:
         pass
 
     def send(self, msg):
-        message_string = json.dumps(server_info.DISCONNECT_MESSAGE).encode(server_info.FORMAT)
+        message_string = json.dumps(msg).encode(server_info.FORMAT)
         client.send(message_string)
+        print(client.recv(2048).decode(server_info.FORMAT))
         # message = msg.encode(FORMAT)
         # msg_length = len(message)
         # send_length = str(msg_length).encode(FORMAT)
@@ -22,4 +23,5 @@ class ClientClass:
 
 if __name__ == "__main__":
     client_instance = ClientClass()
+    client_instance.send(server_info.LOGIN_MESSAGE)
     client_instance.send(server_info.DISCONNECT_MESSAGE)
