@@ -16,11 +16,12 @@ class ServerClass:
         print(f"[NEW CONNECTION {self.addr} connected.")
 
         connected = True
-        message_string = b''
         while connected:
             tmp = self.conn.recv(1024)
+            message_string = b''
             message_string += tmp
-            msg = json.loads(message_string.decode())
+            message_string = message_string.decode("utf-8")
+            msg = json.loads(message_string)
             if msg["code"] == 1:
                 connected = False
 

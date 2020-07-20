@@ -13,6 +13,7 @@ class ClientClass:
         message_string = json.dumps(msg).encode(server_info.FORMAT)
         client.send(message_string)
         print(client.recv(2048).decode(server_info.FORMAT))
+        print(type(message_string))
         # message = msg.encode(FORMAT)
         # msg_length = len(message)
         # send_length = str(msg_length).encode(FORMAT)
