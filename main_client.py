@@ -1,22 +1,28 @@
 from init.user import UserClass
 from init.choices import LIST_OF_CHOICES
 
+def user_choice(choice, active_choices):
+    if choice in active_choices:
+        if choice == 1:
+            print("[!] Do you want to log in?")
+        if choice == 2:
+            print("[!] Do you want to sign up?")
+    else:
+        print("[!] Please, provide a correct choice.")
 
 if __name__ == "__main__":
     user = UserClass(LIST_OF_CHOICES)
     user_is_on = True
     user.introduction()
     user.display_choices()
+    user.check_active_choices()
     while user_is_on:
         try:
-            a = int(input())
+            user_input = int(input("[?] Type your choice: "))
         except Exception:
             print("[!] You can't use text, just numbers.")
-        if (a == -1):
+            user_input = 100
+        if (user_input == -1):
             print("[!] Exit.")
             break
-        for i in LIST_OF_CHOICES:
-            if i["id"] == a:
-                print("OK")
-            else:
-                print("[!] You must insert a correct choice!")
+        user_choice(user_input, user.check_active_choices())
