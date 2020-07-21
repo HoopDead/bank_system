@@ -11,3 +11,7 @@ class UserClass:
         for (index, choice) in enumerate(self.list_of_choices):
             if choice["active"]:
                 print("[%i] %s" % (index, choice["message"]))
+
+    def check_active_choices(self):
+        active_choices = [i["id"] for i in self.list_of_choices if i["active"]]
+        return active_choices
