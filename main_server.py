@@ -1,18 +1,18 @@
-from init.database_creator import Creator
-from init.database_checker import Checker
-from automation.create_some_accounts import AccountCreatorAutomat
+from init.database_creator import CreatorClass
+from init.database_checker import CheckerClass
+from automation.create_some_accounts import AccountCreatorAutomatClass
 from sockets.server import ServerClass
 from sockets.server_info import SERVER, ADDR
-from auth.password_encrypt import AuthenticationPasswordEncrypter
+from auth.password_encrypt import AuthenticationPasswordEncrypterClass
 import json
 
 
-print("[Main.py] Starting Database Creator")
+print("[Main_Server.py] Starting Database Creator")
 #=== CLASS INIT AREA
-database_creator = Creator()
-database_checker = Checker()
-accounts_creator = AccountCreatorAutomat()
-password_encrypter = AuthenticationPasswordEncrypter()
+database_creator = CreatorClass()
+database_checker = CheckerClass()
+accounts_creator = AccountCreatorAutomatClass()
+password_encrypter = AuthenticationPasswordEncrypterClass()
 server_class = ServerClass(SERVER, ADDR)
 
 database_creator.create_db()

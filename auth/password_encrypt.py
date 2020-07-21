@@ -2,7 +2,7 @@ from base64 import b64encode, b64decode
 from cryptography.fernet import Fernet
 import json
 
-class AuthenticationPasswordEncrypter:
+class AuthenticationPasswordEncrypterClass:
     def __init__(self):
         self.secret_key = b""
         self.nonce = "+XyHurecq+U="

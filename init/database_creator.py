@@ -1,6 +1,6 @@
 import pymysql
 
-class Creator:
+class CreatorClass:
     def __init__(self):
         pass
 

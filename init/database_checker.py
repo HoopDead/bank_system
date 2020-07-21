@@ -1,7 +1,7 @@
-from init.database_creator import Creator
+from init.database_creator import CreatorClass
 import pymysql
 
-class Checker(Creator):
+class CheckerClass(CreatorClass):
     def __init__(self):
         pass
 

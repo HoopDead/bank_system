@@ -24,6 +24,8 @@ class ServerClass:
             msg = json.loads(message_string)
             if msg["code"] == 1:
                 connected = False
+            if msg["code"] == 2:
+                print("[%s] Login: %s, Password: %s" % (self.addr, msg["login"], msg["password"]))
 
             print("[%s] %s" % (self.addr, msg["message"]))
             self.conn.send("[Server.py - Client.py] Message recived successfully".encode(server_info.FORMAT))

@@ -1,13 +1,13 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from init.database_creator import Creator
-from auth.password_encrypt import AuthenticationPasswordEncrypter
+from init.database_creator import CreatorClass
+from auth.password_encrypt import AuthenticationPasswordEncrypterClass
 import pymysql
 import requests
 from random import randint
 
-class AccountCreatorAutomat(Creator):
+class AccountCreatorAutomatClass(CreatorClass):
     def __init__(self):
         pass
 
