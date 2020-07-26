@@ -1,10 +1,13 @@
 from init.user import UserClass
 from init.choices import LIST_OF_CHOICES
+from auth.login import UserLoginClass
 
 def user_choice(choice, active_choices):
     if choice in active_choices:
         if choice == 1:
             print("[!] Do you want to log in?")
+            user_login = UserLoginClass(input("Wprowadź nazwę użytkownika: "), input("Wprowadź hasło: "))
+            user_login.login()
         if choice == 2:
             print("[!] Do you want to sign up?")
     else:
