@@ -57,3 +57,6 @@ Folder sockets:
             constructor - takes addr and server information
             handle_client - function for handle client connection
             start - starts the socket server
+
+EXAMPLE LOGIN & PASSWORD:
+Login: 17395561, Password: binladen

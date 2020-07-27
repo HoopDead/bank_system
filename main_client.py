@@ -7,7 +7,9 @@ def user_choice(choice, active_choices):
         if choice == 1:
             print("[!] Do you want to log in?")
             user_login = UserLoginClass(input("Wprowadź nazwę użytkownika: "), input("Wprowadź hasło: "))
-            user_login.login()
+            password_encoded = user_login.get_password_from_db()
+            if(password_encoded):
+                user_login.login(password_encoded)
         if choice == 2:
             print("[!] Do you want to sign up?")
     else:

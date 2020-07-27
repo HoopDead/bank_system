@@ -5,7 +5,6 @@ import json
 class AuthenticationPasswordEncrypterClass:
     def __init__(self):
         self.secret_key = b""
-        self.nonce = "+XyHurecq+U="
     
     def set_secret_key(self):
         with open('/mnt/d/Programs/Projekty/bank_system/auth/key.json') as key_json:

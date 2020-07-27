@@ -16,8 +16,7 @@ class AccountCreatorAutomatClass(CreatorClass):
         cursor = connection.cursor()
         cursor.execute("USE clients")
         for _ in range(8):
-            response = requests.get("https://randomuser.me/api")
-            r = response.json()
+            r = requests.get("https://randomuser.me/api").json()
             person = {
                 "first_name": r["results"][0]['name']['first'].encode("utf-8"), 
                 "last_name": r["results"][0]['name']['last'].encode("utf-8"),
@@ -29,11 +28,12 @@ class AccountCreatorAutomatClass(CreatorClass):
                 "login_number": randint(11111111, 99999999), 
                 "password": r["results"][0]["login"]["password"]
             }
-            password_encrypter = AuthenticationPasswordEncrypter()
+            password_encrypter = AuthenticationPasswordEncrypterClass()
             password_encrypter.set_secret_key()
             password = password_encrypter.password_encode(person["password"].encode("utf-8"))
             statement = ("INSERT INTO accounts (name, surname, balance, address, account_number, creditcard, cvv, login_number, password) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)")
             values = (person["first_name"], person["last_name"], person["balance"], person["address"], person["account_number"], person["credit_card_number"], person["cvv"], person["login_number"], password)
+            print("Login: %s, Password: %s" % (person["login_number"], person["password"]))
             try:
                 cursor.execute(statement, values)
             except pymysql.err.InternalError:
