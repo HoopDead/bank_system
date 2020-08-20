@@ -1,5 +1,10 @@
 mysql-connector-python
 mysql
+pymysql
+base64
+crypto
+pip install pycryptodome==3.4.3
+pycrypto
 
 Mysql config on ubuntu:
 
@@ -12,3 +17,12 @@ update user set authentication_string=PASSWORD("") where User='root';
 update user set plugin="mysql_native_password" where User='root';  # THIS LINE 
 flush privileges; 
 quit;
+
+sudo /etc/init.d/mysql start
+mysql -u root -p
+
+
+IN CASE MYSQL WONT WORK
+
+sudo apt-get install libmysqlclient-dev
+sudo apt-get install python3-dev

@@ -1,0 +1,62 @@
+Folder Init:
+
+    database_creator.py:
+
+        Class Creator handles multiple methods - 
+            _connection - connects to database
+            create_db - create database clients
+            create_client_table - create accounts table
+
+    database_checker.py:
+
+        Class CheckerClass inherits from CreatorClass - the only reason for that is _connection method is passed -
+            check_if_database_exists - checks, if database exists
+            check_if_table_exists - check, if table exists
+            check_if_accounts_in_table_exists - check, if there's any account in table
+
+    user.py:
+
+        Class UserClass handles information about user, his action and active choices -
+            constructor - takes argument about list of choices, that user CAN and CANNOT choose
+            introduction - print some information about program
+            display_choices - display choices, that user can make
+            check_active_choices - check from INPUT what choices are active right now
+
+Folder automation:
+
+    create_some_accounts.py:
+
+        Class inherits from Creator, the only reason is that _connection method is passed
+        Class AccountCreatorAutomat:
+        Class handles multiple methods - 
+            create_multiple_accounts - function to fill the accounts table with random data for testing
+
+client.py:
+
+Folder Auth:
+
+    password_encrypt.py:
+
+        AuthenticationPasswordEncrypterClass have information about password encryption and decryption - 
+            constructor - take nothing, just set secret_key to zero bytes
+            set_secret_key - set secret_key from json file
+            password_encode - encoding given password with secret key
+            password_decode - decodeing given password with secret key
+
+
+Folder sockets:
+
+    client.py:
+
+        ClientClass - handles information about socket client -
+            send - send message to server - ENCODING - utf-8
+
+    server.py:
+
+        ServerClass - handles information about socket server -
+            constructor - takes addr and server information
+            handle_client - function for handle client connection
+            start - starts the socket server
+
+EXAMPLE LOGIN & PASSWORD:
+Login: 17395561, Password: binladen
