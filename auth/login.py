@@ -28,6 +28,8 @@ class UserLoginClass(CreatorClass, AuthenticationPasswordEncrypterClass):
         password_decode = password_encode.decode("utf-8")
         if(password_decode == self.password):
             print("[Login.py] Everything is okay, redirect to logged in user.")
+            return True
         else:
             print("[Login.py] Username or Password is incorrect!")
+            return False
 

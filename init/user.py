@@ -15,3 +15,7 @@ class UserClass():
     def check_active_choices(self):
         active_choices = [i["id"] for i in self.list_of_choices if i["active"]]
         return active_choices
+
+    def update_active_choices(self, updated_list_of_choices):
+        self.list_of_choices = updated_list_of_choices
+        print("[User.py] Updated list of choices!")
