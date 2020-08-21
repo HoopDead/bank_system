@@ -10,7 +10,7 @@ class UserClass():
     def display_choices(self):
         for (index, choice) in enumerate(self.list_of_choices):
             if choice["active"]:
-                print("[%i] %s" % (index+1, choice["message"]))
+                print("[%i] %s" % (choice["id"], choice["message"]))
 
     def check_active_choices(self):
         active_choices = [i["id"] for i in self.list_of_choices if i["active"]]
