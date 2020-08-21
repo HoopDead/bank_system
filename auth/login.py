@@ -18,6 +18,9 @@ class UserLoginClass(CreatorClass, AuthenticationPasswordEncrypterClass):
         except Exception:
             print("[Login.py] Username or Password is incorrect!")
 
+    def get_username(self):
+        return self.username
+
     def login(self, password):
         connection = self._connection()
         auth_login = AuthenticationPasswordEncrypterClass()

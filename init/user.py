@@ -1,6 +1,7 @@
 class UserClass():
     def __init__(self, list_of_choices):
         self.list_of_choices = list_of_choices
+        self.username = None
         pass
 
     def introduction(self):
@@ -19,3 +20,9 @@ class UserClass():
     def update_active_choices(self, updated_list_of_choices):
         self.list_of_choices = updated_list_of_choices
         print("[User.py] Updated list of choices!")
+
+    def update_username(self, username):
+        self.username = username
+
+    def get_username(self):
+        return self.username
