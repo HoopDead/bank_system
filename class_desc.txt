@@ -17,10 +17,28 @@ Folder Init:
     user.py:
 
         Class UserClass handles information about user, his action and active choices -
-            constructor - takes argument about list of choices, that user CAN and CANNOT choose
+            constructor - takes argument about list of choices, that user CAN and CANNOT choose, and what login_number for bank does user have
             introduction - print some information about program
             display_choices - display choices, that user can make
             check_active_choices - check from INPUT what choices are active right now
+            get_account_number - opens connection with database and check, what account number in bank does user have
+            update_username - function, that updates class with new username
+            get_username - function, that returns username
+
+    transaction.py:
+
+        Class UserTransaction handles all operations allowed for user in bank, including passing money to someone, or check contact list -
+            constructor - nothing here 
+            check_contact_list - return a list of all persons registered in bank, that function is temporary and made just for simplify the process of passing money for tests :)
+            make_transaction - passing money from your pocket, to other user.
+
+    balance.py:
+    
+        Class UserBalance is created for all operations connected with your account balance, like checking balance, adding it, etc -
+            constructor - takes your login number, made for mysql statements
+            get_account_balance - get how much money is on your account
+            get_account_balance_by_account_number - get how much money there's on account with given account number
+            add_account_balance - function made for tests - you can add as much money, as you can
 
 Folder automation:
 
@@ -43,6 +61,27 @@ Folder Auth:
             password_encode - encoding given password with secret key
             password_decode - decodeing given password with secret key
 
+        login.py:
+
+        UserLoginClass have all function connented with login auth system - 
+            constructor - login, and password
+            get_password_from_db - get password from database with given username from constructor,
+            get_username - returns your username
+            login - function just logs you in, with given login and password in constructor
+
+        register.py:
+
+            UserRegisterClass have all function conneted with register auth system - 
+                constructor - firstname, surname, password, country, city, street_name, home number
+                fetch_login_numbers - check what login numbers are already in db
+                fetch_account_numbers - check what acc numbers are already in db
+                fetch_credit_card_numbers - check what credit card numbers are in db
+                get_login_number - return new login number for new account
+                get_account_number - retun new account number for new account
+                get_credit_card_number - return credit card number for new acc
+                register - register your new account
+
+
 
 Folder sockets:
 
@@ -60,3 +99,6 @@ Folder sockets:
 
 EXAMPLE LOGIN & PASSWORD:
 Login: 17395561, Password: binladen
+
+EXAMPLE ACC NUMBER:
+57921482462334238293115254

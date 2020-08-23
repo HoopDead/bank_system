@@ -5,7 +5,9 @@ LIST_OF_CHOICES = [
 
 LIST_OF_CHOICES_AUTH = [
     {"id": 3, "message": "If you want to do transaction", "ACTION": "TRANSACTION", "active": True},
-    {"id": 4, "message": "If you want to check your account balance", "ACTION": "CHECK_BALANCE", "active": True},
-    {"id": 5, "message": "If you want to add some balance to your account", "ACTION": "ADD_BALANCE", "active": True},
-    {"id": 6, "message": "If you want to logout", "ACTION": "LOGOUT", "active": True}
+    {"id": 4, "message": "If you want to check your contant list", "ACTION": "CHCEK_CONTACTS", "active": True},
+    {"id": 5, "message": "If you want to check your account balance", "ACTION": "CHECK_BALANCE", "active": True},
+    {"id": 6, "message": "If you want to add some balance to your account", "ACTION": "ADD_BALANCE", "active": True},
+    {"id": 7, "message": "If you want to check your account number", "ACTION": "CHECK_ACCOUNT_NUMBER", "active": True},
+    {"id": 8, "message": "If you want to logout", "ACTION": "LOGOUT", "active": True}
 ]

@@ -17,6 +17,18 @@ class UserBalance(CreatorClass):
         except Exception:
             print("[Check_balance.py] Something went wrong, please report bug on my github: https://github.com/hoopdead/")
 
+    def get_account_balance_by_account_number(self, account_number):
+        connection = self._connection()
+        cursor = connection.cursor()
+        cursor.execute("USE clients")
+        query = "SELECT balance FROM accounts WHERE account_number = %s;"
+        try:
+            sql = cursor.execute(query, (account_number))
+            result = cursor.fetchone()
+            return result[0]
+        except Exception:
+            print("[Check_balance.py] Something went wrong, please report bug on my github: https://github.com/hoopdead/")
+
     def add_account_balance(self, ammount):
         connection = self._connection()
         cursor = connection.cursor()
