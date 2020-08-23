@@ -13,7 +13,7 @@ database_creator = CreatorClass()
 database_checker = CheckerClass()
 accounts_creator = AccountCreatorAutomatClass()
 password_encrypter = AuthenticationPasswordEncrypterClass()
-server_class = ServerClass(SERVER, ADDR)
+# server_class = ServerClass(SERVER, ADDR)
 
 database_creator.create_db()
 database_creator.create_client_table()
@@ -33,4 +33,4 @@ if (database_checker.check_if_accounts_in_table_exists()):
 else:
     accounts_creator.create_multiple_accounts()
 
-server_class.start()
+# server_class.start()

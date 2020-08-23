@@ -3,6 +3,12 @@ from auth.password_encrypt import AuthenticationPasswordEncrypterClass
 from random import randint
 import pymysql
 
+
+"""
+register.py
+=========================
+have all function conneted with register auth system 
+"""
 class UserRegisterClass(CreatorClass, AuthenticationPasswordEncrypterClass):
     def __init__(self, first_name, last_name, password, country, city, street_name, home_number):
         self.first_name = first_name
@@ -13,7 +19,7 @@ class UserRegisterClass(CreatorClass, AuthenticationPasswordEncrypterClass):
         self.street_name = street_name
         self.home_number = home_number
 
-
+    """Fetching all login numbers that are already in db"""
     def fetch_login_numbers(self):
         connection = self._connection()
         cursor = connection.cursor()
@@ -83,7 +89,7 @@ class UserRegisterClass(CreatorClass, AuthenticationPasswordEncrypterClass):
         account_number = self.get_account_number()
         credit_card_number = self.get_credit_card_number()
         cvv =  randint(100, 999)
-        address = self.country + "," + self.city + "," + self.street_name + "," + self.home_number
+        address = self.country + "," + self.city + "," + self.street_name + "," + self.home_number #Create one address from thee diffrent variables - easier to storage in db
         balance = 0
         statement = ("INSERT INTO accounts (name, surname, balance, address, account_number, creditcard, cvv, login_number, password) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)")
         values = (self.first_name, self.last_name, balance, address, account_number, credit_card_number, cvv, login_number, password_encode)
