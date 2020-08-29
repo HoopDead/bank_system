@@ -16,7 +16,10 @@ class AccountCreatorAutomatClass(CreatorClass):
         cursor = connection.cursor()
         cursor.execute("USE clients")
         for _ in range(8):
-            r = requests.get("https://randomuser.me/api").json()
+            try:
+                r = requests.get("https://randomuser.me/api").json()
+            except simplejson.errors.JSONDecodeError:
+                print("[Create_some_accounts.py] There's some non utf-8 coding in person object. Passing error and not adding this value to database.")
             person = {
                 "first_name": r["results"][0]['name']['first'].encode("utf-8"), 
                 "last_name": r["results"][0]['name']['last'].encode("utf-8"),
